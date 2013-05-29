@@ -15,6 +15,10 @@ describe 'supervisord', :type => 'class' do
       should contain_service('supervisor').with( { 'name' => 'supervisor' } )
     end
 
+    it 'should have directory /etc/supervisor/conf.d' do
+      should contain_file('/etc/supervisor/conf.d')
+    end
+
     it 'should contain file /etc/supervisor/supervisord.conf with logfile=/var/log/supervisor/supervisord.log' do
       should contain_file('/etc/supervisor/supervisord.conf') \
         .with_content(/^logfile=\/var\/log\/supervisor\/supervisord.log$/)

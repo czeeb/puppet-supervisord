@@ -16,8 +16,8 @@
 
 define supervisord::resource::program (
   $ensure                  = 'enable',
-  $process_name            = '$(program_name)s',
   $command                 = undef,
+  $process_name            = undef, 
   $numprocs                = undef,
   $numprocs_start          = undef,
   $priority                = undef,
@@ -48,8 +48,16 @@ define supervisord::resource::program (
   $serverurl               = undef
 ) {
 
+  if ! defined(Class['supervisord']) {
+    fail("You must include supervisord base class before using supervisord defined resources.")
+  }
+
   #unless ${name} {
   #  fail("No name set for supervisord::resource::program")
+  #}
+
+  #unless $command {
+  #  fail("Command must be set")
   #}
 
   File {
@@ -59,6 +67,7 @@ define supervisord::resource::program (
   }
 
   file { "/etc/supervisor/conf.d/${name}.conf":
+    ensure => file,
     content => template('supervisord/program.conf.erb'),
   } ~> Exec['update-config']
 

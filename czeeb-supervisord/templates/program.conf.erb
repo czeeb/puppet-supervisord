@@ -1,3 +1,5 @@
+### This file is managed by puppet.  ###
+### Do not edit manually.            ###
 [program:<%= @name %>]
 command=<%= @command %>
 process_name=<%= @process_name %>
@@ -25,13 +27,15 @@ stderr_logfile_maxbytes=<%= @stderr_logfile_maxbytes %>
 stderr_logfile_backups=<%= @stderr_logfile_backups %>
 stderr_capture_maxbytes=<%= @stderr_capture_maxbytes %>
 stderr_events_enabled=<%= @stderr_events_enabled %>
-<% if @environment and @environment != '' %>
+<% if @environment and @environment != '' -%>
 environment=<%= @environment %>
-<% end %>
-<% if @directory and @directory != '' %>
+<% end -%>
+<% if @directory and @directory != '' -%>
 directory=<%= @directory %>
-<% end %>
-<% if @umask and @umask != '' %>
+<% end -%>
+<% if @umask and @umask != '' -%>
 umask=<%= @umask %>
-<% end %>
+<% end -%>
+<% if @serverurl != 'AUTO' -%>
 serverurl=<%= @serverurl %>
+<% end -%>

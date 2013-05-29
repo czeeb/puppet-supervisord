@@ -17,7 +17,7 @@ class supervisord::config () {
   }
 
   file { '/etc/supervisor/conf.d':
-    ensure  => directory,
+    ensure  => "directory",
     recurse => true,
     purge   => true,
   }
