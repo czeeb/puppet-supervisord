@@ -15,9 +15,9 @@
 # }
 
 define supervisord::resource::program (
-  $ensure                  = 'enable',
+  $ensure                  = 'present',
   $command                 = undef,
-  $process_name            = undef, 
+  $process_name            = undef,
   $numprocs                = undef,
   $numprocs_start          = undef,
   $priority                = undef,
@@ -26,7 +26,7 @@ define supervisord::resource::program (
   $startsecs               = undef,
   $startretries            = undef,
   $exitcodes               = undef,
-  $stopsignial             = undef,
+  $stopsignal              = undef,
   $stopwaitsecs            = undef,
   $stopasgroup             = undef,
   $killasgroup             = undef,
@@ -49,26 +49,29 @@ define supervisord::resource::program (
 ) {
 
   if ! defined(Class['supervisord']) {
-    fail("You must include supervisord base class before using supervisord defined resources.")
+    fail('You must include supervisord base class before using supervisord defined resources.')
   }
 
-  #unless ${name} {
-  #  fail("No name set for supervisord::resource::program")
-  #}
-
-  #unless $command {
-  #  fail("Command must be set")
-  #}
-
-  File {
-    owner => 'root',
-    group => 'root',
-    mode  => '0644',
+  if ! $name {
+    fail('No name set for supervisord::resource::program')
   }
 
-  file { "/etc/supervisor/conf.d/${name}.conf":
-    ensure => file,
+  if ! $command {
+    fail('Command must be set for supervisord::resource::program')
+  }
+
+  $filename = regsubst($name, ' ', '_', 'G')
+
+  file { "/etc/supervisor/conf.d/${filename}.conf":
+    ensure  => $ensure,
     content => template('supervisord/program.conf.erb'),
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    require => [
+      Package['supervisord'],
+      File['/etc/supervisor/conf.d/'],
+    ],
   } ~> Exec['update-config']
 
 }
