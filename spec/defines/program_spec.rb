@@ -26,7 +26,7 @@ describe 'supervisord::resource::program', :type => :define do
 
     it 'should create /etc/supervisor/conf.d/testname.conf with config file header' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^\[program:testname\]$/)
+        .with_content(/^\[program:testname\]$/)
     end
   end
 
@@ -46,143 +46,138 @@ describe 'supervisord::resource::program', :type => :define do
     end
 
     it 'should not set process_name' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^process_name=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^process_name=/)
     end
 
     it 'should not set numprocs' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^numprocs=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^numprocs=/)
     end
 
     it 'should not set numprocs_start' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^numprocs_start=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^numprocs_start=/)
     end
 
     it 'should not set priority' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^priority=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^priority=/)
     end
 
     it 'should not set autostart' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^autostart=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^autostart=/)
     end
 
     it 'should not set autorestart' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^autorestart=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^autorestart=/)
     end
 
     it 'should not set startsecs' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^startsecs=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^startsecs=/)
     end
 
     it 'should not set startretries' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^startretries=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^startretries=/)
     end
 
     it 'should not set exitcodes' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^exitcodes=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^exitcodes=/)
     end
 
     it 'should not set stopsignal' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^stopsignal=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^stopsignal=/)
     end
 
     it 'should not set stopwaitsecs' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^stopwaitsecs=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^stopwaitsecs=/)
     end
 
     it 'should not set stopasgroup' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^stopasgroup=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^stopasgroup=/)
     end
 
     it 'should not set killasgroup' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^killasgroup=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^killasgroup=/)
     end
 
     it 'should not set user' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^user=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^user=/)
     end
 
     it 'should not set redirect_stderr' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^redirect_stderr=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^redirect_stderr=/)
     end
 
     it 'should not set stderr_logfile' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^stderr_logfile=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^stderr_logfile=/)
     end
 
     it 'should not set stderr_logfile_maxbytes' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^stderr_logfile_maxbytes=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^stderr_logfile_maxbytes=/)
     end
 
     it 'should not set stderr_logfile_backups' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^stderr_logfile_backups=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^stderr_logfile_backups=/)
     end
 
     it 'should not set stderr_capture_maxbytes' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^stderr_capture_maxbytes=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^stderr_capture_maxbytes=/)
     end
       
     it 'should not set stderr_events_enabled' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^stderr_events_enabled=/)
-    end
-
-    it 'should not set redirect_stdout' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^redirect_stdout=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^stderr_events_enabled=/)
     end
 
     it 'should not set stdout_logfile' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^stdout_logfile=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^stdout_logfile=/)
     end
 
     it 'should not set stdout_logfile_maxbytes' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^stdout_logfile_maxbytes=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^stdout_logfile_maxbytes=/)
     end
 
     it 'should not set stdout_logfile_backups' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^stdout_logfile_backups=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^stdout_logfile_backups=/)
     end
 
     it 'should not set stdout_capture_maxbytes' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^stdout_capture_maxbytes=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^stdout_capture_maxbytes=/)
     end
       
     it 'should not set stdout_events_enabled' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^stdout_events_enabled=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^stdout_events_enabled=/)
     end
 
     it 'should not set environment' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^environment=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^environment=/)
     end
 
     it 'should not set serverurl' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .without_contents(/^serverurl=/)
+      should_not contain_file('/etc/supervisor/conf.d/testname.conf') \
+        .with_content(/^serverurl=/)
     end
   end
 
@@ -228,147 +223,142 @@ describe 'supervisord::resource::program', :type => :define do
 
     it 'should set command' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^command=\/bin\/cat$/)
+        .with_content(/^command=\/bin\/cat$/)
     end
 
     it 'should set process_name' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^process_name=test_name$/)
+        .with_content(/^process_name=test_name$/)
     end
 
     it 'should set numprocs' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^numprocs=5$/)
+        .with_content(/^numprocs=5$/)
     end
 
     it 'should set numprocs_start' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^numprocs_start=1$/)
+        .with_content(/^numprocs_start=1$/)
     end
 
     it 'should set priority' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^priority=900$/)
+        .with_content(/^priority=900$/)
     end
 
     it 'should set autostart' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^autostart=false$/)
+        .with_content(/^autostart=false$/)
     end
 
     it 'should set autorestart' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^autorestart=false$/)
+        .with_content(/^autorestart=false$/)
     end
 
     it 'should set startsecs' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^startsecs=5$/)
+        .with_content(/^startsecs=5$/)
     end
 
     it 'should set startretries' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^startretries=10$/)
+        .with_content(/^startretries=10$/)
     end
 
     it 'should set exitcodes' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^exitcodes=0,5$/)
+        .with_content(/^exitcodes=0,5$/)
     end
 
     it 'should set stopsignal' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^stopsignal=USR1$/)
+        .with_content(/^stopsignal=USR1$/)
     end
 
     it 'should set stopwaitsecs' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^stopwaitsecs=20$/)
+        .with_content(/^stopwaitsecs=20$/)
     end
 
     it 'should set stopasgroup' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^stopasgroup=true$/)
+        .with_content(/^stopasgroup=true$/)
     end
 
     it 'should set killasgroup' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^killasgroup=true$/)
+        .with_content(/^killasgroup=true$/)
     end
 
     it 'should set user' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^user=randomuser$/)
+        .with_content(/^user=randomuser$/)
     end
 
     it 'should set redirect_stderr' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^redirect_stderr=true$/)
+        .with_content(/^redirect_stderr=true$/)
     end
 
     it 'should set stderr_logfile' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^stderr_logfile=\/tmp\/stdout.log$/)
+        .with_content(/^stderr_logfile=\/tmp\/stdout.log$/)
     end
 
     it 'should set stderr_logfile_maxbytes' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^stderr_logfile_maxbytes=10MB$/)
+        .with_content(/^stderr_logfile_maxbytes=10MB$/)
     end
 
     it 'should set stderr_logfile_backups' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^stderr_logfile_backups=5$/)
+        .with_content(/^stderr_logfile_backups=5$/)
     end
 
     it 'should set stderr_capture_maxbytes' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^stderr_capture_maxbytes=10KB$/)
+        .with_content(/^stderr_capture_maxbytes=10KB$/)
     end
       
     it 'should set stderr_events_enabled' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^stderr_events_enabled=1$/)
-    end
-
-    it 'should set redirect_stdout' do
-      should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^redirect_stdout=true$/)
+        .with_content(/^stderr_events_enabled=1$/)
     end
 
     it 'should set stdout_logfile' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^stdout_logfile=\/tmp\/stdout.log$/)
+        .with_content(/^stdout_logfile=\/tmp\/stdout.log$/)
     end
 
     it 'should set stdout_logfile_maxbytes' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^stdout_logfile_maxbytes=10MB$/)
+        .with_content(/^stdout_logfile_maxbytes=10MB$/)
     end
 
     it 'should set stdout_logfile_backups' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^stdout_logfile_backups=5$/)
+        .with_content(/^stdout_logfile_backups=5$/)
     end
 
     it 'should set stdout_capture_maxbytes' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^stdout_capture_maxbytes=10KB$/)
+        .with_content(/^stdout_capture_maxbytes=10KB$/)
     end
       
     it 'should set stdout_events_enabled' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^stdout_events_enabled=1$/)
+        .with_content(/^stdout_events_enabled=1$/)
     end
 
     it 'should set environment' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^environment=E=mc2$/)
+        .with_content(/^environment=E=mc2$/)
     end
 
     it 'should set serverurl' do
       should contain_file('/etc/supervisor/conf.d/testname.conf') \
-        .with_contents(/^serverurl=someurl$/)
+        .with_content(/^serverurl=someurl$/)
     end
   end
 end

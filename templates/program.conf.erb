@@ -44,9 +44,6 @@ killasgroup=<%= @killasgroup %>
 <% if @user -%>
 user=<%= @user %>
 <% end -%>
-<% if @redirect_stderr -%>
-redirect_stderr=<%= @redirect_stderr %>
-<% end -%>
 <% if @stdout_logfile %>
 stdout_logfile=<%= @stdout_logfile %>
 <% end -%>
@@ -61,6 +58,9 @@ stdout_capture_maxbytes=<%= @stdout_capture_maxbytes %>
 <% end -%>
 <% if @stdout_events_enabled -%>
 stdout_events_enabled=<%= @stdout_events_enabled %>
+<% end -%>
+<% if @redirect_stderr -%>
+redirect_stderr=<%= @redirect_stderr %>
 <% end -%>
 <% if @stderr_logfile -%>
 stderr_logfile=<%= @stderr_logfile %>
@@ -77,15 +77,15 @@ stderr_capture_maxbytes=<%= @stderr_capture_maxbytes %>
 <% if @stderr_events_enabled -%>
 stderr_events_enabled=<%= @stderr_events_enabled %>
 <% end -%>
-<% if @environment and @environment != '' -%>
+<% if @environment -%>
 environment=<%= @environment %>
 <% end -%>
-<% if @directory and @directory != '' -%>
+<% if @directory -%>
 directory=<%= @directory %>
 <% end -%>
-<% if @umask and @umask != '' -%>
+<% if @umask -%>
 umask=<%= @umask %>
 <% end -%>
-<% if @serverurl != 'AUTO' -%>
+<% if @serverurl -%>
 serverurl=<%= @serverurl %>
 <% end -%>
