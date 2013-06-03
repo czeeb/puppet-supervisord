@@ -69,7 +69,7 @@ define supervisord::resource::program (
     group   => 'root',
     mode    => '0644',
     require => [
-      Package['supervisord'],
+      Package['supervisor'],
       File['/etc/supervisor/conf.d/'],
     ],
   } ~> Exec['update-config']
